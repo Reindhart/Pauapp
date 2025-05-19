@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#pantalla-bienvenida {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    animation: fadeout 1s ease-in-out 2s forwards;
+}
+
+@keyframes fadeout {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+#escritorio {
+    display: none;
+    padding: 20px;
+    height: 100%;
+}
+
+#escritorio.visible {
+    display: block;
+}
+
+.icono {
+    width: 100px;
+    text-align: center;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.icono img {
+    width: 64px;
+    height: 64px;
+}
+
+.iconos {
+    display: flex;
+    flex-wrap: wrap;
+}

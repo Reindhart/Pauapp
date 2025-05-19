@@ -1,0 +1,26 @@
+.detalles-container{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100%;
+    min-height: 100dvh;
+    overflow:hidden;
+    background: url("MARBLE.png");
+}
+
+.detalle-modal {
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.detalle-label {
+    font-weight: bold;
+    width: 120px;
+    display: inline-block;
+}
+
+
+
+.detalle-fila {
+    margin-bottom: 10px;
+}

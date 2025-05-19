@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": true,
+      "cwd": "d:/_App/xampp/htdocs/pau",
+      "program": "d:/_App/xampp/htdocs/pau/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "D:\\msys64\\ucrt64\\bin\\gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}

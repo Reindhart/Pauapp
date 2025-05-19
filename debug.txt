@@ -1,0 +1,12 @@
+Array
+(
+    [input] => clave123
+    [hash] => $2y$10$axWP7ZD1uThPmJgHGCyGB.HNs
+    [verificacion] => fail
+)
+Array
+(
+    [input] => clave123
+    [hash] => $2y$10$axWP7ZD1uThPmJgHGCyGB.HNs
+    [verificacion] => fail
+)

@@ -1,0 +1,36 @@
+.form-group {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.aesthetic-windows-95-text-input{
+    width: 100%;
+}
+.error { color: red; margin-top: 5px; }
+
+label { font-weight: bold; display: block; }
+
+.form-editar{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100dvh;
+    min-height: 100%;
+    flex-grow: 1;
+    background: url("Squares.png");
+}
+
+.gallery-container{
+    display: none;
+    border: 1px solid #888;
+    padding: 10px;
+    width: 310px;
+    background: #f9f9f9;
+    position: absolute;
+    z-index: 10;
+    color: #f9f9f9;
+}
+
+.aesthetic-windows-95-modal-title-bar{
+    padding: 4px !important;
+}
