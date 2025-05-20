@@ -1,7 +1,19 @@
 $(document).ready(function () {
+
+    if ($('#mensaje_sesion').text().trim() !== '') {
+            setTimeout(() => {
+                $('#mensaje_sesion').fadeOut();
+            }, 3000);
+        }
+
+    $('.dismiss').on('click', function () {
+        console.log("boton")
+        $(this).closest('.aesthetic-windows-xp-notification').removeClass('is-active');
+    });
+
     $('#form-login').on('submit', function (e) {
         e.preventDefault();
-
+        
         const correo = $('#correo').val().trim();
         const pass = $('#pass').val().trim();
 
@@ -16,7 +28,6 @@ $(document).ready(function () {
             method: 'POST',
             data: { correo, pass },
             success: function (respuesta) {
-                console.log(respuesta);
                 if (respuesta === 'ok') {
                     window.location.href = 'bienvenido.php';
                 } else {

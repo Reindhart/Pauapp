@@ -1,8 +1,5 @@
 <?php
-if (!isset($_GET['id'])) {
-    header('Location: empleados_lista.php');
-    exit;
-}
+include 'verificar_sesion.php';
 
 $conn = new mysqli("localhost", "root", "", "pauapp");
 if ($conn->connect_error) {
@@ -53,13 +50,20 @@ $conn->close();
         <title>Detalle de Empleado</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="aesthetic.css">
-        <link rel="stylesheet" href="detalles.css">
+        <link rel="stylesheet" href="empleados_detalles.css">
     </head>
     <body class="aesthetic-font detalles-container">
         <div class="aesthetic-windows-95-modal detalle-modal">
             <div class="aesthetic-windows-95-modal-title-bar">
                 <div class="aesthetic-windows-95-modal-title-bar-text">
                     <h2>Detalle del empleado</h2>
+                </div>
+                <div class="aesthetic-windows-95-modal-title-bar-controls" style="justify-content: center;">
+                    <a href="bienvenido.php" style="text-decoration: none;">
+                        <div class="aesthetic-windows-95-button" style="height: 13px; width: 13px;">
+                            <button style="display: flex; justify-content: center;">X</button>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="aesthetic-windows-95-modal-content">
@@ -74,5 +78,6 @@ $conn->close();
                 <a href="empleados_lista.php" class="aesthetic-windows-95-button"><button>Regresar</button></a>
             </div>
         </div>
+        <?php include 'footer.php'; ?>
     </body>
 </html>

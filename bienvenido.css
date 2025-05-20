@@ -7,6 +7,11 @@ body {
     overflow: hidden;
 }
 
+body.fadeout {
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
 #pantalla-bienvenida {
     position: absolute;
     z-index: 1000;

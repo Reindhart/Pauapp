@@ -1,3 +1,6 @@
+<?php
+include 'verificar_sesion.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -5,9 +8,9 @@
         <title>Alta de empleados</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="aesthetic.css">
-        <link rel="stylesheet" href="alta.css">
+        <link rel="stylesheet" href="empleados_alta.css">
         <script src="jquery-3.7.1.min.js"></script>
-        <script src="alta.js"></script>
+        <script src="empleados_alta.js"></script>
     </head>
 
     <body class="form-agregar">
@@ -15,6 +18,13 @@
             <div class="aesthetic-windows-95-modal-title-bar">
                 <div class="aesthetic-windows-95-modal-title-bar-text">
                     <h1>Alta de empleado</h1>
+                </div>
+                <div class="aesthetic-windows-95-modal-title-bar-controls" style="justify-content: center;">
+                    <a href="bienvenido.php" style="text-decoration: none;">
+                        <div class="aesthetic-windows-95-button" style="height: 13px; width: 13px;">
+                            <button style="display: flex; justify-content: center;">X</button>
+                        </div>
+                    </a>
                 </div>
             </div>
 
@@ -101,8 +111,9 @@
                     <div id="form-error" class="error"></div>
                 </form>
                 <hr>
-                <a href="empleados_lista.php" class="aesthetic-pepsi-blue-color">Regresar al listado</a> | <a href="bienvenido.php" class="aesthetic-pepsi-blue-color">Regresar al inicio</a>
+                <a href="empleados_lista.php" class="aesthetic-windows-95-button"><button>Regresar</button></a>
             </div>
         </div>
-</body>
+        <?php include 'footer.php'; ?>
+    </body>
 </html>

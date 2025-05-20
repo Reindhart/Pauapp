@@ -5,10 +5,11 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-$result = $conn->query("SELECT * FROM empleados WHERE eliminado = 0");
-$eliminados = $conn->query("SELECT * FROM empleados WHERE eliminado = 1");
+$result = $conn->query("SELECT * FROM productos WHERE eliminado = 0");
+$eliminados = $conn->query("SELECT * FROM productos WHERE eliminado = 1");
+$ruta_imagen = "productos/";
 
-$num_empleados = $result->num_rows;
+$num_productos = $result->num_rows;
 ?>
                         
 <!DOCTYPE html>
@@ -16,12 +17,12 @@ $num_empleados = $result->num_rows;
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Listado de Empleados</title>
+        <title>Listado de Productos</title>
         <link rel="stylesheet" href="aesthetic.css">
-        <link rel="stylesheet" href="empleados_lista.css">
+        <link rel="stylesheet" href="productos_lista.css">
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <script src="jquery-3.7.1.min.js"></script>
-        <script src="empleados_lista.js"></script> 
+        <script src="productos_lista.js"></script> 
     </head>
 
     <body>
@@ -29,10 +30,10 @@ $num_empleados = $result->num_rows;
             <div class="aesthetic-windows-95-modal modal">
                 <div class="aesthetic-windows-95-modal-title-bar">
                     <div class="aesthetic-windows-95-modal-title-bar-text">
-                        <h1>Listado de empleados (<?php echo $num_empleados; ?>)</h1>
+                        <h1>Listado de productos (<?php echo $num_productos; ?>)</h1>
                     </div>
                     <div class="aesthetic-windows-95-modal-title-bar-controls">
-                        <a href="empleados_alta.php">
+                        <a href="productos_alta.php">
                             <div class="aesthetic-windows-95-button">
                                 <button>Crear nuevo registro</button>
                             </div>
@@ -50,13 +51,14 @@ $num_empleados = $result->num_rows;
                     <hr />
                     <div class="aesthetic-windows-95-container-indent">
                         <div class="table-container">
-                            <table class="empleados-table">
+                            <table class="productos-table">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre completo</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>
+                                        <th>Nombre</th>
+                                        <th>Código</th>
+                                        <th>Costo</th>
+                                        <th>Stock</th>
                                         <th>Ver detalle</th>
                                         <th>Editar</th>
                                         <th>Eliminar</th>
@@ -64,33 +66,34 @@ $num_empleados = $result->num_rows;
                                 </thead>
                                 <tbody>
                                     <?php
-                                    if ($num_empleados > 0) {
+                                    if ($num_productos > 0) {
                                         while ($row = $result->fetch_assoc()) {
-                                            $rol_texto = ($row["rol"] == 1) ? "Gerente" : "Ejecutivo";
                                             echo "<tr>";
                                             echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["nombre"] . " " . $row["apellidos"] . "</td>";
-                                            echo "<td>" . $row["correo"] . "</td>";
-                                            echo "<td>" . $rol_texto . "</td>";
-                                            echo "<td><a href='empleados_detalle.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_user.png' class='detalles-btn' alt='detalles{$row["id"]}'></a></td>";
-                                            echo "<td><a href='empleados_editar.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_pad.png' class='detalles-btn' alt='editar{$row["id"]}'></a></td>";
+                                            echo "<td>" . $row["nombre"] . "</td>";
+                                            echo "<td>" . $row["codigo"] . "</td>";
+                                            echo "<td>" . number_format($row["costo"], 2) . "</td>";
+                                            echo "<td>" . $row["stock"] . "</td>";
+                                            echo "<td><a href='productos_detalle.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_user.png' class='detalles-btn' alt='detalles{$row["id"]}'></a></td>";
+                                            echo "<td><a href='productos_editar.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_pad.png' class='detalles-btn' alt='editar{$row["id"]}'></a></td>";
                                             echo "<td><button class='aesthetic-windows-95-button-title-bar delete-btn' data-id='{$row["id"]}'><img src='msg_error-0.png' alt='eliminar{$row["id"]}'></button></td>";
                                             echo "</tr>";
                                         }
                                     } else {
-                                        echo "<tr><td colspan='7'>No hay empleados registrados</td></tr>";
+                                        echo "<tr><td colspan='9'>No hay productos registrados</td></tr>";
                                     }
                                     if ($eliminados->num_rows > 0) {
-                                        echo "<tr><td colspan='7' class='aesthetic-windows-95-title-bar'>Empleados eliminados</td></tr>";
+                                        echo "<tr><td colspan='9' class='aesthetic-windows-95-title-bar'>Productos eliminados</td></tr>";
                                         while ($row = $eliminados->fetch_assoc()) {
                                             $rol_texto = ($row["rol"] == 1) ? "Gerente" : "Ejecutivo";
                                             echo "<tr>";
                                             echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["nombre"] . " " . $row["apellidos"] . "</td>";
-                                            echo "<td>" . $row["correo"] . "</td>";
-                                            echo "<td>" . $rol_texto . "</td>";
-                                            echo "<td><a href='empleados_detalle.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_user.png' class='detalles-btn' alt='detalles{$row["id"]}'></a></td>";
-                                            echo "<td><a href='empleados_editar.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_pad.png' class='detalles-btn' alt='editar{$row["id"]}'></a></td>";
+                                            echo "<td>" . $row["nombre"] . "</td>";
+                                            echo "<td>" . $row["codigo"] . "</td>";
+                                            echo "<td>" . number_format($row["costo"], 2) . "</td>";
+                                            echo "<td>" . $row["stock"] . "</td>";
+                                            echo "<td><a href='productos_detalle.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_user.png' class='detalles-btn' alt='detalles{$row["id"]}'></a></td>";
+                                            echo "<td><a href='productos_editar.php?id={$row["id"]}' class='aesthetic-windows-95-button-title-bar'><img src='address_book_pad.png' class='detalles-btn' alt='editar{$row["id"]}'></a></td>";
                                             echo "<td><button class='btn-blocked'><img src='no2-0.png' alt='blocked'></button></td>";
                                             echo "</tr>";
                                         }

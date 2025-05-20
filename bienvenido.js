@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function cerrarSesion() {
+    const audio = new Audio('logoff-computer.mp3');
+    audio.play();
+    console.log("Cerrando sesión...")
+
+    document.body.classList.add('fadeout');
     sessionStorage.removeItem('bienvenida_mostrada');
-    document.getElementById('logout-form').submit();
+
+    setTimeout(() => {
+        document.getElementById('logout-form').submit();
+    }, 1000);
 }
+

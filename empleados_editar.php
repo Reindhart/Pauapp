@@ -1,8 +1,5 @@
 <?php
-if (!isset($_GET['id'])) {
-    header("Location: empleados_lista.php");
-    exit;
-}
+include 'verificar_sesion.php';
 
 $conn = new mysqli("localhost", "root", "", "pauapp");
 $id = intval($_GET['id']);
@@ -38,15 +35,22 @@ $conn->close();
         <title>Edición de empleados</title>
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="aesthetic.css">
-        <link rel="stylesheet" href="editar.css">
+        <link rel="stylesheet" href="empleados_editar.css">
         <script src="jquery-3.7.1.min.js"></script>
-        <script src="editar.js"></script>
+        <script src="empleados_editar.js"></script>
     </head>
     <body class="aesthetic-font form-editar">
         <div class="aesthetic-windows-95-modal">
             <div class="aesthetic-windows-95-modal-title-bar">
                 <div class="aesthetic-windows-95-modal-title-bar-text">
-                    <h1>Edición de empleados</h1>
+                    <h2>Edición de empleados</h2>
+                </div>
+                <div class="aesthetic-windows-95-modal-title-bar-controls" style="justify-content: center;">
+                    <a href="bienvenido.php" style="text-decoration: none;">
+                        <div class="aesthetic-windows-95-button" style="height: 13px; width: 13px;">
+                            <button style="display: flex; justify-content: center;">X</button>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="aesthetic-windows-95-modal-content">
@@ -122,8 +126,9 @@ $conn->close();
                     <div id="form-error" class="error"></div>
                 </form>
                 <hr>
-                <a href="empleados_lista.php" class="aesthetic-pepsi-blue-color">Regresar</a>
+                <a href="empleados_lista.php" class="aesthetic-windows-95-button"><button>Regresar</button></a>
             </div>
         </div>
+        <?php include 'footer.php'; ?>
     </body>
 </html>
