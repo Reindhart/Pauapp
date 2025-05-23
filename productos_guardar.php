@@ -5,9 +5,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    $nombre = $conn->real_escape_string($_POST['nombre']);
-    $apellidos = $conn->real_escape_string($_POST['apellidos']);
-    $codigo = $conn->real_escape_string($_POST['codigo']);
+    $nombre = trim($conn->real_escape_string($_POST['nombre']));
+    $descripcion = trim($conn->real_escape_string($_POST['descripcion']));
+    
+    $codigo = filter_input(INPUT_POST, 'codigo', FILTER_VALIDATE_INT);
+    $stock = filter_input(INPUT_POST, 'stock', FILTER_VALIDATE_INT);
+    $costo_raw = $_POST['costo'];
+    $costo = number_format((float)$costo_raw, 2, '.', '');
+
+    if (!$nombre || !$descripcion || $codigo === false || $stock === false || $costo < 0) {
+        die("Datos inválidos. Verifica que todos los campos estén llenos y correctamente formateados.");
+    }
 
     $foto_encriptado = "";
     $foto_original = "";
@@ -49,17 +57,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     
         $dst = imagecreatetruecolor($ancho_orig, $alto_orig);
+        imagecopy($dst, $src, 0, 0, 0, 0, $ancho_orig, $alto_orig);
         imageinterlace($dst, true);
         imagejpeg($dst, $destino, 95);
-    
+
         imagedestroy($src);
         imagedestroy($dst);
     } else {
         die("Debes seleccionar o subir una imagen.");
     }
 
-    $sql = "INSERT INTO productos (nombre, apellidos, correo, pass, rol, archivo_nombre, archivo_file)
-            VALUES ('$nombre', '$apellidos', '$correo', '$pass', $rol, '$foto_original', '$foto_encriptado')";
+    $sql = "INSERT INTO productos (nombre, codigo, descripcion, costo, stock, archivo_n, archivo)
+            VALUES ('$nombre', $codigo, '$descripcion', $costo, $stock, '$foto_original', '$foto_encriptado')";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: productos_lista.php");

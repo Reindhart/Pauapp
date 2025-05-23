@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=960, initial-scale=1.0" />
+  <title>Tabla 2 con Div</title>
+  <style>
+    .tabla {
+      width: 960px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      border: 3px double #000;
+      box-sizing: border-box;
+    }
+
+    .fila {
+      display: flex;
+      border-top: 3px double #000;
+    }
+
+    .fila:first-child {
+      border-top: none;
+    }
+
+    .celda {
+      flex: 1;
+      border-left: 3px double #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .celda:first-child {
+      border-left: none;
+    }
+
+    .celda-50 {
+      width: 50%;
+      flex: none;
+    }
+
+    .fila-50 {
+      height: 50px;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p>Tabla 960px ancho 800px alto</p>
+
+  <div class="tabla">
+    <!-- Fila superior de 50px con colspan (ocupando todo el ancho) -->
+    <div class="fila fila-50">
+      <div class="celda" style="flex: 2;">Fila 50px Alto</div>
+    </div>
+
+    <!-- Fila con dos columnas, primera con 50% -->
+    <div class="fila" style="flex: 1;">
+      <div class="celda celda-50">Columna 50% ancho</div>
+      <div class="celda"></div>
+    </div>
+
+    <!-- Fila inferior de 50px con colspan -->
+    <div class="fila fila-50">
+      <div class="celda" style="flex: 2;">Fila 50px Alto</div>
+    </div>
+  </div>
+</body>
+</html>

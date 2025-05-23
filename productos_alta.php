@@ -29,7 +29,7 @@ include 'verificar_sesion.php';
             </div>
 
             <div class="aesthetic-windows-95-modal-content">
-                <form id="form-empleado" method="POST" action="productos_guardar.php" enctype="multipart/form-data">
+                <form id="form-producto" method="POST" action="productos_guardar.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Nombre</label>
                         <input type="text" name="nombre" class="aesthetic-windows-95-text-input">
@@ -40,16 +40,16 @@ include 'verificar_sesion.php';
                     </div>
                     <div class="form-group">
                         <label>Código</label>
-                        <input type="number" name="codigo" id="codigo" class="aesthetic-windows-95-text-input">
+                        <input type="number" name="codigo" id="codigo" class="aesthetic-windows-95-text-input" step="1" min="0">
                         <div id="codigo-error" class="error"></div>
                     </div>
                     <div class="form-group">
                         <label>Costo</label>
-                        <input id="costo" type="number" name="costo" class="aesthetic-windows-95-text-input" step="any">
+                        <input id="costo" type="number" name="costo" class="aesthetic-windows-95-text-input" step="0.01" min="0">
                     </div>
                     <div class="form-group">
                         <label>Stock Inicial</label>
-                        <input type="number" name="stock" class="aesthetic-windows-95-text-input" step="1">
+                        <input type="number" name="stock" id="stock" class="aesthetic-windows-95-text-input" step="1" min="0">
                     </div>
                     <div class="form-group">
                         <div>

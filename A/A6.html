@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Validacion de campos con JS 01</title>
+    </head>
+    <body>
+        <style>
+            .form-group{
+                display: flex;
+                flex-direction: column;
+                width: 300px;
+                margin: 10px auto;
+            }
+
+            .form-group div{
+                padding: 10px;
+            }
+        </style>
+        <div class="form-group">
+            <form id="formulario-chido">
+                <div>
+                    <label for="correo">Correo</label>
+                    <input type="email" name="correo" id="correo">
+                </div>
+                <div>
+                    <label for="pass">Pass</label>
+                    <input type="password" name="pass" id="pass">
+                </div>
+                <div>
+                    <label for="rol">Rol</label>
+                    <select name="rol" id="rol">
+                        <option value="">Selecciona</option>
+                        <option value="gerente">Gerente</option>
+                        <option value="ejecutivo">Ejecutivo</option>
+                    </select>
+                </div>
+                <button type="submit">Entregame esta</button>
+            </form>
+        </div>
+    </body>
+    <script>
+        document.querySelector('#formulario-chido').addEventListener('submit', function(e){
+            e.preventDefault();
+            let correo = document.querySelector('input[name="correo"]').value;
+            let pass = document.querySelector('input[name="pass"]').value;
+            let rol = document.querySelector('select[name="rol"]').value;
+
+            if(correo == "" || pass == "" || rol == ""){
+                alert("Todos los campos son obligatorios ❌");
+                return false;
+            }else{
+                alert("Todo bien ✅");
+                return true;
+            }
+        });
+    </script>
+</html>

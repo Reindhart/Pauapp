@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=960, initial-scale=1.0" />
+  <title>Tabla 1 con Div</title>
+  <style>
+    .tabla {
+      width: 960px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      border: 3px double #000;
+      box-sizing: border-box;
+    }
+
+    .fila {
+      display: flex;
+      border-top: 3px double #000;
+    }
+
+    .fila:first-child {
+      height: 50px;
+      border-top: none;
+    }
+
+    .celda {
+      flex: 1;
+      border-left: 3px double #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fila .celda:first-child {
+      border-left: none;
+    }
+
+    .columna-ancho-100 {
+      width: 100px;
+      flex: none;
+    }
+
+    .tabla .fila:first-child .celda {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  Tabla 960px ancho 800px alto
+  <div class="tabla">
+    <div class="fila" style="height: 50px;">
+      <div class="celda" style="flex: 2;">Fila 50px Alto</div>
+    </div>
+    <div class="fila" style="flex: 1;">
+      <div class="celda columna-ancho-100">Columna 100px ancho</div>
+      <div class="celda"></div>
+    </div>
+  </div>
+</body>
+</html>

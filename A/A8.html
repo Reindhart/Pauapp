@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Imágenes</title>
+    <script src="../jquery-3.7.1.min.js"></script> <!-- jQuery -->
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+        }
+
+        button {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Motos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="img1.jpg" target="_blank"><img src="img1.jpg" alt="BMW S1000RR"></a></td>
+                <td><a href="https://www.bmw-motorrad.com.mx/es/models/sport/s1000rr.html" target="_blank"> BMW S1000RR</a></td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+            <tr>
+                <td><a href="img2.jpg" target="_blank"><img src="img2.jpg" alt="Ducati Panigale V4 R"></a></td>
+                <td><a href="https://www.ducati.com/mx/es/motocicletas/panigale/panigale-v4-r" target="_blank">Ducati Panigale V4 R</a></td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+            <tr>
+                <td><a href="img3.jpg" target="_blank"><img src="img3.jpg" alt="Aprilia RSV4 RR"></a></td>
+                <td><a href="https://apriliamx.com/modelos/racing/rsv4-rr/" target="_blank">Aprilia RSV4 RR</a></td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+            <tr>
+                <td><a href="img4.jpg" target="_blank"><img src="img4.jpg" alt="Kawasaki Ninja H2R"></a></td>
+                <td><a href="https://www.kawasaki.com.mx/motocicletas/ninja/hypersport/ninja-h2/" target="_blank">Kawasaki Ninja H2R</a></td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+            <tr>
+                <td><a href="img5.jpg" target="_blank"><img src="img5.jpg" alt="Yamaha R1"></a></td>
+                <td><a href="https://www.yamaha-motor.com.mx/motos/super-deportivas/yzf-r1-2024" target="_blank">Yamaha R1</a></td>
+                <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function eliminarFila(boton) {
+            if (confirm("¿Estás seguro de que deseas eliminar esta fila?")) {
+                $(boton).closest("tr").remove();
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Formulario request</title>
+    </head>
+    <body>
+        <form name="forma01" action="recibe.html" method="POST" id="forma01">
+            <label for="nombre">Nombre:</label>
+            <input id="campo1" type="text" name="nombre" placeholder="Escribe tu nombre" required>
+            <br>
+            <label for="correo">Correo:</label>
+            <input type="email" name="correo" value="@udg.mx">
+            <br>
+            <label for="sexo">Genero:</label>
+            <input type="radio" name="sexo" value="F">Femenino
+            <input type="radio" name="sexo" value="M">Masculino
+            <br>
+            <input type="checkbox" name="boletin" value="1" checked>
+            <label for="boletin">Recibir Boletín</label>
+            <br>
+            <label for="comentario">Comentario:</label><br>
+            <textarea name="comentario" cols="30" rows="5"></textarea>
+            <br>
+            <label for="carrera">Carrera:</label>
+            <select name="carrera">
+                <option value="0" selected>Selecciona</option>
+                <option value="1">Ing. Informática</option>
+                <option value="2">Ing. Computación</option>			
+            </select>
+            <br>
+            <label for="pasw">Contraseña:</label>
+            <input type="password" name="pasw">
+            <br>
+            <label for="promedio">Promedio:</label>
+            <input type="number" name="promedio" min="60" max="100">
+            <br>
+            <label for="fecha">Fecha nacimiento:</label>
+            <input type="date" name="fecha">
+            <br>
+            <input onClick="recibe(); return false;" type="submit" value="Enviar con input">
+        </form>
+        <script>
+            function recibe() {
+                const form = document.getElementById('forma01');
+                const inputs = Array.from(form.elements);
+                let emptyInputs = [];
+
+                inputs.forEach(input => {
+                    if (input.type !== 'submit' && input.type !== 'checkbox' && input.type !== 'radio') {
+                        if (input.value.trim() === '') {
+                            const label = form.querySelector(`label[for="${input.name}"]`);
+                            const labelText = label ? label.textContent.trim().replace(':', '') : input.name;
+                            emptyInputs.push(labelText);
+                        }
+                    }
+                });
+
+                let correoInput = document.querySelector('input[name="correo"]');
+                let correo = correoInput.value;
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+                    const label = form.querySelector(`label[for="correo"]`);
+                    const labelText = label ? label.textContent.trim().replace(':', '') : 'Correo';
+                    emptyInputs.push(labelText + ' (correo inválido)');
+                }
+
+                let carrera = document.querySelector('select[name="carrera"]').value;
+                if (carrera === '0') {
+                    const label = form.querySelector('label[for="carrera"]');
+                    const labelText = label ? label.textContent.trim().replace(':', '') : 'Carrera';
+                    emptyInputs.push(labelText);
+                }
+
+                let selectedRadio = document.querySelector('input[name="sexo"]:checked');
+                if (!selectedRadio) {
+                    const label = form.querySelector('label[for="sexo"]');
+                    const labelText = label ? label.textContent.trim().replace(':', '') : 'Sexo';
+                    emptyInputs.push(labelText);
+                }
+
+                if (emptyInputs.length > 0) {
+                    alert("Los siguientes campos son obligatorios ❌:\n- " + emptyInputs.join('\n- '));
+                    return false;
+                } else {
+                    alert("Todo bien ✅");
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>

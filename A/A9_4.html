@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=960, initial-scale=1.0" />
+  <title>Tabla4 con Div</title>
+  <style>
+    .tabla-principal {
+      width: 960px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      border: 3px double #000;
+      box-sizing: border-box;
+    }
+
+    .fila {
+      flex: 1;
+      display: flex;
+      border-top: 3px double #000;
+    }
+
+    .fila:first-child {
+      border-top: none;
+    }
+
+    .celda {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 3px double #000;
+      box-sizing: border-box;
+    }
+
+    .celda:first-child {
+      border-left: none;
+    }
+
+    .tabla-anidada {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 2px double #000;
+    }
+
+    .fila-anidada {
+      flex: 1;
+      display: flex;
+      border-top: 1px double #000;
+    }
+
+    .fila-anidada:first-child {
+      border-top: none;
+    }
+
+    .subcelda {
+      flex: 1;
+      border-left: 1px double #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .subcelda:first-child {
+      border-left: none;
+    }
+  </style>
+</head>
+<body>
+  <p>Tabla 960px ancho 800px alto</p>
+
+  <div class="tabla-principal">
+    <!-- Fila 1 -->
+    <div class="fila">
+      <!-- Celda 1 -->
+      <div class="celda">
+        <div class="tabla-anidada">
+          <div class="fila-anidada" style="height: 12.5%;">
+            <div class="subcelda" style="flex: 2;">&nbsp;</div>
+          </div>
+          <div class="fila-anidada">
+            <div class="subcelda" style="width: 25%;">&nbsp;</div>
+            <div class="subcelda">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Celda 2 -->
+      <div class="celda">
+        <div class="tabla-anidada">
+          <div class="fila-anidada" style="height: 12.5%;">
+            <div class="subcelda" style="flex: 2;">&nbsp;</div>
+          </div>
+          <div class="fila-anidada">
+            <div class="subcelda">&nbsp;</div>
+            <div class="subcelda">&nbsp;</div>
+          </div>
+          <div class="fila-anidada" style="height: 12.5%;">
+            <div class="subcelda" style="flex: 2;">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 2 -->
+    <div class="fila">
+      <!-- Celda 1 -->
+      <div class="celda">
+        <div class="tabla-anidada">
+          <div class="fila-anidada" style="height: 12.5%;">
+            <div class="subcelda" style="flex: 2;">&nbsp;</div>
+          </div>
+          <div class="fila-anidada">
+            <div class="subcelda" style="width: 25%; flex: none;" rowspan="2">&nbsp;</div>
+            <div class="subcelda">&nbsp;</div>
+          </div>
+          <div class="fila-anidada">
+            <div class="subcelda">&nbsp;</div>
+          </div>
+          <div class="fila-anidada" style="height: 12.5%;">
+            <div class="subcelda" style="flex: 2;">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Celda 2 -->
+      <div class="celda">
+        <div class="tabla-anidada">
+          <div class="fila-anidada">
+            <div class="subcelda" style="width: 50%;">&nbsp;</div>
+            <div class="subcelda">&nbsp;</div>
+          </div>
+          <div class="fila-anidada">
+            <div class="subcelda">&nbsp;</div>
+            <div class="subcelda">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

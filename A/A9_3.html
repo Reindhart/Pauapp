@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=960, initial-scale=1.0" />
+  <title>Tabla 3 con Div</title>
+  <style>
+    .tabla {
+      width: 960px;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+      border: 3px double #000;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+
+    .fila {
+      display: flex;
+      border-top: 3px double #000;
+    }
+
+    .fila:first-child {
+      border-top: none;
+    }
+
+    .celda {
+      border-left: 3px double #000;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .celda:first-child {
+      border-left: none;
+    }
+
+    .fila-50 {
+      height: 50px;
+    }
+
+    .contenido {
+      flex: 1;
+      display: flex;
+    }
+
+    .col-izquierda {
+      width: 100px;
+      border-right: 3px double #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col-derecha {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .celda-vertical {
+      flex: 1;
+      border-top: 3px double #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .celda-vertical:first-child {
+      border-top: none;
+    }
+  </style>
+</head>
+<body>
+  <p>Tabla 960px ancho 800px alto</p>
+
+  <div class="tabla">
+    <!-- Fila superior -->
+    <div class="fila fila-50">
+      <div class="celda" style="flex: 2;">Fila 50px Alto</div>
+    </div>
+
+    <!-- Cuerpo principal -->
+    <div class="contenido" style="flex: 1;">
+      <!-- Columna izquierda con rowspan=2 -->
+      <div class="col-izquierda">
+        <div class="celda" style="flex: 2;">Columna 100px ancho</div>
+      </div>
+
+      <!-- Columna derecha dividida en dos filas -->
+      <div class="col-derecha">
+        <div class="celda-vertical"></div>
+        <div class="celda-vertical"></div>
+      </div>
+    </div>
+
+    <!-- Fila inferior -->
+    <div class="fila fila-50">
+      <div class="celda" style="flex: 2;">Fila 50px Alto</div>
+    </div>
+  </div>
+</body>
+</html>

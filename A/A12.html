@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Formulario request</title>
+	</head>
+	<body>
+		<form name="forma01" action="recibe.php" method="POST">
+			<label>Nombre:
+			<input id="campo1" type="text" name="nombre" placeholder="Escribe tu nombre">
+			</label><br>
+			<label>Correo:
+			<input type="email" name="correo" value="@udg.mx">
+			</label><br>
+			<label>Género:</label>
+			<input type="radio" name="sexo" value="F">Femenino
+			<input type="radio" name="sexo" value="M">Masculino<br>
+			<input type="checkbox" name="boletin" value="1" checked>
+			<label>Recibir Boletín</label><br>
+			<label>Comentario:</label><br>
+			<textarea name="comentario" cols="30" rows="5"></textarea><br>
+			<label>Carrera:</label>
+			<select name="carrera">
+				<option value="0">Selecciona</option>
+				<option value="1">Ing. Informática</option>
+				<option value="2">Ing. Computación</option>
+			</select><br>
+			<label>Contraseña:
+			<input type="password" name="pasw">
+			</label><br>
+			<label>Promedio:
+			<input type="number" name="promedio" min="60" max="100">
+			</label><br>
+			<label>Fecha nacimiento:
+			<input type="date" name="fecha">
+			</label><br><br>
+			<input type="submit" value="Enviar con input" onclick="recibe(); return false;">
+		</form>
+		<script>
+			function recibe() {
+			const form = document.forms['forma01'];
+			const nombre = form['nombre'].value.trim();
+			const correo = form['correo'].value.trim();
+			const sexo = form['sexo'].value;
+			const boletin = form['boletin'].checked;
+			const comentario = form['comentario'].value.trim();
+			const carrera = form['carrera'].value;
+			const pasw = form['pasw'].value;
+			const promedio = form['promedio'].value;
+			const fecha = form['fecha'].value;
+			if (
+				nombre === "" || correo === "" || !sexo || 
+				comentario === "" || carrera === "0" || 
+				pasw === "" || promedio === "" || fecha === ""
+			) {
+				alert("Faltan campos por llenar");
+				return false;
+			}
+			form.submit();
+			}
+		</script>
+	</body>
+</html>
